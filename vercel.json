@@ -1,0 +1,44 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "main.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "50mb"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/health",
+      "dest": "/main.py"
+    },
+    {
+      "src": "/api/info",
+      "dest": "/main.py"
+    },
+    {
+      "src": "/generate-video",
+      "dest": "/main.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/main.py"
+    }
+  ],
+  "functions": {
+    "main.py": {
+      "runtime": "python3.10"
+    }
+  },
+  "env": {
+    "PYTHONPATH": "/var/task"
+  },
+  "regions": ["iad1"],
+  "installCommand": "pip install -r requirements.txt"
+}

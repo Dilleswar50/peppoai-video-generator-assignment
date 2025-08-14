@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Video Generator - Create Videos from Text</title>
+    <meta name="description" content="Generate high-quality videos from text prompts using advanced AI">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 AI Video Generator</h1>
+            <p class="subtitle">Transform your ideas into videos with AI-powered generation</p>
+        </header>
+        
+        <main>
+            <form id="videoForm" class="video-form">
+                <div class="input-group">
+                    <label for="prompt">Enter your video prompt:</label>
+                    <input type="text" id="prompt" name="prompt" 
+                           placeholder="e.g., A cat playing in a sunny garden" 
+                           required maxlength="200">
+                    <small class="input-hint">Be descriptive for better results (max 200 characters)</small>
+                </div>
+                
+                <button type="submit" id="generateBtn" class="generate-btn">
+                    <span id="btnText">Generate Video</span>
+                    <div id="loadingSpinner" class="spinner" style="display: none;"></div>
+                </button>
+            </form>
+            
+            <div class="examples">
+                <h3>💡 Example Prompts (click to try):</h3>
+                <div class="example-grid">
+                    <div class="example-item" onclick="fillPrompt('A dog running on the beach')">
+                        🐕 A dog running on the beach
+                    </div>
+                    <div class="example-item" onclick="fillPrompt('A person walking in a forest')">
+                        🌲 A person walking in a forest
+                    </div>
+                    <div class="example-item" onclick="fillPrompt('Flowers blooming in spring')">
+                        🌸 Flowers blooming in spring
+                    </div>
+                    <div class="example-item" onclick="fillPrompt('Cars driving on a highway')">
+                        🚗 Cars driving on a highway
+                    </div>
+                </div>
+            </div>
+            
+            <div id="loading" class="loading" style="display: none;">
+                <div class="loading-content">
+                    <div class="loading-animation"></div>
+                    <h3>🎥 Generating your video...</h3>
+                    <p>AI is processing your prompt with advanced enhancements</p>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="result" class="result" style="display: none;">
+                <h3>✅ Generated Video:</h3>
+                <div class="video-container">
+                    <video id="generatedVideo" controls preload="metadata">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-actions">
+                    <button id="downloadBtn" class="download-btn">
+                        📥 Download Video
+                    </button>
+                    <button onclick="generateAnother()" class="secondary-btn">
+                        🔄 Generate Another
+                    </button>
+                </div>
+                <div id="enhancedPrompt" class="enhanced-prompt"></div>
+            </div>
+            
+            <div id="error" class="error" style="display: none;"></div>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="project-info">
+                    <p><strong>Peppo AI Assignment</strong></p>
+                    <p>Powered by Wan-AI Model via Hugging Face • RAG-Enhanced Prompts</p>
+                </div>
+                <div class="developer-info">
+                    <p><strong>Developed by:</strong> Kakarla Dilleswara Rao</p>
+                    <p>📧 dilleswar0050@gmail.com | 📱 9150478989</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
