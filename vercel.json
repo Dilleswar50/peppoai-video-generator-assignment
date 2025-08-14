@@ -3,11 +3,11 @@
   "builds": [
     {
       "src": "main.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "50mb",
-        "memory": 1024
-      }
+      "use": "@vercel/python"
+    },
+    {
+      "src": "static/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -16,25 +16,8 @@
       "dest": "/static/$1"
     },
     {
-      "src": "/health",
-      "dest": "/main.py"
-    },
-    {
-      "src": "/api/info",
-      "dest": "/main.py"
-    },
-    {
-      "src": "/generate-video",
-      "dest": "/main.py"
-    },
-    {
       "src": "/(.*)",
       "dest": "/main.py"
     }
-  ],
-  "env": {
-    "PYTHONPATH": "/var/task"
-  },
-  "regions": ["iad1"]
+  ]
 }
-
